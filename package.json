@@ -1,0 +1,22 @@
+{
+  "homepage": "https://stillraining.com",
+  "name": "stillraining.com",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "deploy": "gh-pages -d out"
+  },
+  "dependencies": {
+    "gh-pages": "^4.0.0",
+    "next": "latest",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "typescript": "^4.7.4"
+  },
+  "devDependencies": {
+    "eslint": "8.18.0",
+    "eslint-config-next": "12.1.6"
+  }
+}
