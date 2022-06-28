@@ -10,7 +10,7 @@ export default function Home() {
 
       <main>
         <h1 className="title">
-          Aloha to <a href="https://nextjs.org">Next.js!</a>
+          Guttentag to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
         <p className="description">
