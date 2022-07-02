@@ -1,0 +1,1 @@
+{"pageProps":{"posts":[{"title":"Post 1","publishedAt":"2022-04-16","excerpt":"Some content here","cover_image":"path/to/where/image/is/stored","slug":"post1","readingTime":"1 min read"},{"title":"thing","publishedAt":"2022-04-16","excerpt":"Things!","cover_image":"path/to/where/image/is/stored","slug":"post2","readingTime":"23 min read"}]},"__N_SSG":true}
