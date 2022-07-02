@@ -1,1 +1,14 @@
-{}
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 error pnpm": {
+    "code": "ERR_PNPM_NO_PKG_MANIFEST",
+    "err": {
+      "name": "pnpm",
+      "message": "No package.json found in /Users/burkeb1/dev/github.com/brnbke/stillraining.com",
+      "code": "ERR_PNPM_NO_PKG_MANIFEST",
+      "stack": "pnpm: No package.json found in /Users/burkeb1/dev/github.com/brnbke/stillraining.com\n    at handler (/opt/homebrew/lib/node_modules/pnpm/dist/pnpm.cjs:123174:17)\n    at async /opt/homebrew/lib/node_modules/pnpm/dist/pnpm.cjs:187855:21\n    at async run (/opt/homebrew/lib/node_modules/pnpm/dist/pnpm.cjs:187829:34)\n    at async runPnpm (/opt/homebrew/lib/node_modules/pnpm/dist/pnpm.cjs:188047:5)\n    at async /opt/homebrew/lib/node_modules/pnpm/dist/pnpm.cjs:188039:7"
+    }
+  }
+}
