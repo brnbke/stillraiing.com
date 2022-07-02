@@ -23,7 +23,7 @@ export default function BlogPage({ posts = null}) {
       <div>
         {posts.map((frontMatter) => {
           return (
-            <Link key="{frontMatter.slug}"  href={`/blog/${frontMatter.slug}`} passHref>
+            <Link key="{frontMatter.slug}"  href={`/posts/${frontMatter.slug}`} passHref>
               <div>
                 <h1 className="title">{frontMatter.title}</h1>
                 <p className="summary">{frontMatter.excerpt}</p>
