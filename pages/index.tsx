@@ -1,29 +1,35 @@
-import dayjs from 'dayjs'
 import React from 'react'
-import Head from 'next/head'
-import { GetStaticProps } from 'next'
-import Link from 'next/link'
+
 import type {NextPage} from 'next'
+import { GetStaticProps } from 'next'
 
+import Head from 'next/head'
+import Link from 'next/link'
+
+import dayjs from 'dayjs'
+
+import type {Post, PostProps} from '../src/d'
 import { getAllArticles } from '../src/utils/mdx'
+import * as Constants from '../src/constants'
 
-const Home: NextPage = (posts: {posts: []}, {}) => {
+const Home: NextPage<PostProps> = (props) => {
   return <React.Fragment>
     <Head>
-      <title>My Blog</title>
+      <title>It&apos;s Still Raining</title>
     </Head>
     <div>
-      {posts.posts.map((frontMatter: any) => {
+      {props.posts.map((post: Post) => {
         return (
-          <Link key="{frontMatter.slug}"  href={`/posts/${frontMatter.slug}`} passHref>
-            <div>
-              <h1 className="title">{frontMatter.title}</h1>
-              <p className="summary">{frontMatter.excerpt}</p>
+          <Link key={post.slug}  href={`/posts/${post.slug}`} passHref>
+            <a>
+              <h1 className="title">{post.title}</h1>
+              <p className="summary">{post.excerpt}</p>
               <p className="date">
-                {dayjs(frontMatter.publishedAt).format('MMMM D, YYYY')} &mdash;{' '}
-                {frontMatter.readingTime}
+                {dayjs(post.publishedAt).format('MMMM D, YYYY')} &mdash;{' '}
+                {post.readingTime}
               </p>
-            </div>
+              <p>{Constants.rating.get(post.rating)}</p>
+            </a>
           </Link>
         )
       })}
@@ -33,10 +39,8 @@ const Home: NextPage = (posts: {posts: []}, {}) => {
 
 export default Home
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const articles = await getAllArticles()
-
-  console.log(typeof articles)
 
   articles
     .map((article: any) => article.data)
