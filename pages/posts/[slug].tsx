@@ -14,7 +14,7 @@ import dayjs from 'dayjs'
 
 import { getSlug, getArticleFromSlug } from '../../src/utils/mdx'
 
-import type {IParams, Post} from '../../src/d'
+import type { IParams, Post } from '../../src/d'
 
 interface blogPost {
   post: {
@@ -23,7 +23,7 @@ interface blogPost {
   }
 }
 
-export default function Blog({ post: {source, frontmatter}}: blogPost ) {
+export default function Blog({ post: { source, frontmatter } }: blogPost) {
   return (
     <React.Fragment>
       <Head>

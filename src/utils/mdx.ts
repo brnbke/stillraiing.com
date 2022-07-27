@@ -9,7 +9,7 @@ const articlesPath = path.join(process.cwd(), 'data/articles')
 export async function getSlug() {
   const paths = sync(`${articlesPath}/*.mdx`)
 
-  return paths.map((path:string) => {
+  return paths.map((path: string) => {
     // holds the paths to the directory of the article
     const pathContent = path.split('/')
     const fileName = pathContent[pathContent.length - 1]
@@ -40,7 +40,7 @@ export async function getArticleFromSlug(slug: String) {
 export async function getAllArticles() {
   const articles = fs.readdirSync(path.join(process.cwd(), 'data/articles'))
 
-  return articles.reduce((allArticles:object[], articleSlug:string) => {
+  return articles.reduce((allArticles: object[], articleSlug: string) => {
     // get parsed data from mdx files in the "articles" dir
     const source = fs.readFileSync(
       path.join(process.cwd(), 'data/articles', articleSlug),

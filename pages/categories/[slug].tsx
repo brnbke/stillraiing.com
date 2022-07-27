@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
+import { GetStaticProps, GetStaticPaths } from 'next'
 
 import * as Constants from '../../src/constants'
 
@@ -11,59 +11,36 @@ import dayjs from 'dayjs'
 
 import { getAllArticlesProp } from '../../src/utils/getProps'
 
-import { getSlug } from '../../src/utils/mdx'
+import HeadElem from '../../src/components/head'
+import PostListing from '../../src/components/postListing'
+import SideBar from '../../src/components/sidebar'
 
-import type {IParams, Post} from '../../src/d'
-import { createModuleResolutionCache } from 'typescript'
+import type { Post } from '../../src/d'
 
-export default function Categories( props:any ) {
+export default function Categories(props: any) {
   const router = useRouter()
   const rating = router.asPath.split('/')[2]
 
-  const postMatchingCategories = props.posts.filter((post:any) =>{
-
-    return post.rating.toString() === rating 
-  
+  const postMatchingCategories = props.posts.filter((post: any) => {
+    return post.rating.toString() === rating
   })
-  
-  console.log(rating)
-  console.log(postMatchingCategories)
-  console.log(props.posts)
-  
 
   return <React.Fragment>
-    <Head>
-      <title>It&apos;s Still Raining</title>
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-      <link rel="manifest" href="/site.webmanifest" />
-    </Head>
+    <HeadElem headStr={Constants.rating.get(rating)} />
     <div className="grid grid-cols-8">
       <main className="col-span-6">
-
+        <h1>Posts rated: {rating} - {Constants.rating.get(rating)}</h1>
         {postMatchingCategories.length > 0 && postMatchingCategories.map((post: Post) => {
           return (
-            <Link key={post.slug}  href={`/posts/${post.slug}`} passHref>
-              <a>
-                <h1 className="title">{post.title}</h1>
-                <p className="summary">{post.excerpt}</p>
-                <p className="date">
-                  {dayjs(post.publishedAt).format('MMMM D, YYYY')} &mdash;{' '}
-                  {post.readingTime}
-                </p>
-                <p>{Constants.rating.get(post.rating)}</p>
-              </a>
-            </Link>
+            <PostListing key={post.slug} post={post} />
           )
         })}
-
         {
-          postMatchingCategories.length  === 0 && <p>Sorry no posts with this rage level found</p>
+          postMatchingCategories.length === 0 && <p>Sorry no posts with this rage level found</p>
         }
       </main>
       <div className="col-span-2">
-
+        <SideBar posts={props.posts} />
       </div>
     </div>
   </React.Fragment>

@@ -3,7 +3,6 @@
 module.exports = {
   reactStrictMode: true,
   trailingSlash: true,
-
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
