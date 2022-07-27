@@ -12,6 +12,7 @@ export default function NavBar() {
         </div>
         <div className=' leading-[0]'>
           <Image src={bannerImg} alt="Rage" />
+
         </div>
         <div className="bg-black text-white text-sm py-2 px-5">
           <Link href={`/`}>

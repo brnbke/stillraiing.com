@@ -3,6 +3,11 @@
 module.exports = {
   reactStrictMode: true,
   trailingSlash: true,
+  experimental: {
+    images: {
+      unoptimized: true,
+    },
+  },
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
