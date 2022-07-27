@@ -10,7 +10,7 @@ export default function NavBar () {
                 <Link href={`/`}><a>WMBAT</a></Link>
             </div>
             <div className=' leading-[0]'>
-                <Image src="./header.jpg" alt="Rage" width="940" height="464" />
+                <Image src="/header.jpg" alt="Rage" width="940" height="464" />
             </div>
             <div className="bg-black text-white text-sm py-2 px-5">
                 <Link href={`/`}>

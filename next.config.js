@@ -3,10 +3,6 @@
 module.exports = {
   reactStrictMode: true,
   trailingSlash: true,
-  images: {
-    loader: 'akamai',
-    path: '',
-  },
 
   webpack: (config) => {
     config.resolve.alias = {
