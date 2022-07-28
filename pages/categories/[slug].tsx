@@ -49,10 +49,10 @@ export default function Categories(props: any) {
 
 export const getStaticProps: GetStaticProps = async () => getAllArticlesProp()
 
-// dynamically generate the slugs for each article(s)
 export const getStaticPaths: GetStaticPaths = () => {
-  // get all category keys
   const paths = Array.from(Constants.rating.keys()).map((slug) => ({ params: { slug } }))
+  console.log(paths)
+
 
   return {
     paths,

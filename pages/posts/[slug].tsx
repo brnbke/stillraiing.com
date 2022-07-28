@@ -11,6 +11,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
 import dayjs from 'dayjs'
 
+import HeadElem from '../src/components/head'
 
 import { getSlug, getArticleFromSlug } from '../../src/utils/mdx'
 
@@ -26,9 +27,7 @@ interface blogPost {
 export default function Blog({ post: { source, frontmatter } }: blogPost) {
   return (
     <React.Fragment>
-      <Head>
-        <title>{frontmatter.title} | My blog</title>
-      </Head>
+      <HeadElem headStr={frontmatter.title} />
       <div className="article-container">
         <h1 className="article-title">{frontmatter.title}</h1>
         <p className="publish-date">

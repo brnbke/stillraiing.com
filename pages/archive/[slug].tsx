@@ -10,8 +10,13 @@ import * as Constants from '../../src/constants'
 import dayjs from 'dayjs'
 
 import { getAllArticlesProp } from '../../src/utils/getProps'
+import { getAllArticles } from '../../src/utils/mdx'
 
 import type { Post } from '../../src/d'
+
+import HeadElem from '../../src/components/head'
+import PostListing from '../../src/components/postListing'
+import SideBar from '../../src/components/sidebar'
 
 export default function Categories(props: any) {
   const router = useRouter()
@@ -22,29 +27,13 @@ export default function Categories(props: any) {
   })
 
   return <React.Fragment>
-    <Head>
-      <title>It&apos;s Still Raining</title>
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-      <link rel="manifest" href="/site.webmanifest" />
-    </Head>
+    <HeadElem headStr="sdf" />
     <div className="grid grid-cols-8">
       <main className="col-span-6">
 
         {postMatchingCategories.length > 0 && postMatchingCategories.map((post: Post) => {
           return (
-            <Link key={post.slug} href={`/posts/${post.slug}`} passHref>
-              <a>
-                <h1 className="title">{post.title}</h1>
-                <p className="summary">{post.excerpt}</p>
-                <p className="date">
-                  {dayjs(post.publishedAt).format('MMMM D, YYYY')} &mdash;{' '}
-                  {post.readingTime}
-                </p>
-                <p>{Constants.rating.get(post.rating)}</p>
-              </a>
-            </Link>
+            <PostListing key={post.slug} post={post} />
           )
         })}
 
@@ -53,7 +42,7 @@ export default function Categories(props: any) {
         }
       </main>
       <div className="col-span-2">
-
+        <SideBar posts={props.posts} />
       </div>
     </div>
   </React.Fragment>
@@ -63,9 +52,18 @@ export default function Categories(props: any) {
 export const getStaticProps: GetStaticProps = async () => getAllArticlesProp()
 
 // dynamically generate the slugs for each article(s)
-export const getStaticPaths: GetStaticPaths = () => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const articles = await getAllArticles()
+  const articleDates = new Set()
+
+  articles.map((article:any) => articleDates.add(dayjs(article.publishedAt).format('YYYYMM')))
+
   // get all category keys
-  const paths = Array.from(Constants.rating.keys()).map((slug) => ({ params: { slug } }))
+  const paths = Array.from(articleDates).map((slug) => ({ params: { slug } }))
+
+  console.log('paths')
+  console.log(paths)
+
 
   return {
     paths,
