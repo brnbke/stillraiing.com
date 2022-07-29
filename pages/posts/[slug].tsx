@@ -11,7 +11,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
 import dayjs from 'dayjs'
 
-import HeadElem from '../src/components/head'
+import HeadElem from '../../src/components/head'
 
 import { getSlug, getArticleFromSlug } from '../../src/utils/mdx'
 

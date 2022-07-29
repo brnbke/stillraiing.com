@@ -1,7 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
-import Image from 'next/image'
 import Link from 'next/link'
-import bannerImg from '../../public/header.jpg'
 
 export default function NavBar() {
   return (

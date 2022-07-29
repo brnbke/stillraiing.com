@@ -1,11 +1,8 @@
 import React from 'react'
-import Head from 'next/head'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
-
-import * as Constants from '../../src/constants'
+import { GetStaticProps, GetStaticPaths } from 'next'
+import type { ParsedUrlQuery } from 'querystring'
 
 import dayjs from 'dayjs'
 
@@ -17,6 +14,10 @@ import type { Post } from '../../src/d'
 import HeadElem from '../../src/components/head'
 import PostListing from '../../src/components/postListing'
 import SideBar from '../../src/components/sidebar'
+
+export interface QParams extends ParsedUrlQuery {
+  slug?: string
+}
 
 export default function Categories(props: any) {
   const router = useRouter()
@@ -52,21 +53,17 @@ export default function Categories(props: any) {
 export const getStaticProps: GetStaticProps = async () => getAllArticlesProp()
 
 // dynamically generate the slugs for each article(s)
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<QParams> = async () => {
   const articles = await getAllArticles()
   const articleDates = new Set()
+  articles.map((article: any) => articleDates.add(dayjs(article.publishedAt).format('YYYYMM')))
 
-  articles.map((article:any) => articleDates.add(dayjs(article.publishedAt).format('YYYYMM')))
-
-  // get all category keys
   const paths = Array.from(articleDates).map((slug) => ({ params: { slug } }))
 
-  console.log('paths')
   console.log(paths)
-
-
+  let g = [{ params: { slug: '202204' } }, { params: { slug: '202202' } }]
   return {
-    paths,
+    paths: paths,
     fallback: false,
   }
 }
