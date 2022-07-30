@@ -31,7 +31,7 @@ export default function Blog({ post: { source, frontmatter } }: blogPost) {
       <div className="article-container">
         <h1 className="article-title">{frontmatter.title}</h1>
         <p className="publish-date">
-          {dayjs(frontmatter.publishedAt).format('MMMM D, YYYY')} &mdash;{' '}
+          Posted on {dayjs(frontmatter.publishedAt).format('MMMM D, YYYY')} &mdash;{' '}
           {frontmatter.readingTime}
         </p>
         <div className="content">

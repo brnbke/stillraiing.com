@@ -55,13 +55,10 @@ export const getStaticProps: GetStaticProps = async () => getAllArticlesProp()
 // dynamically generate the slugs for each article(s)
 export const getStaticPaths: GetStaticPaths<QParams> = async () => {
   const articles = await getAllArticles()
-  const articleDates = new Set()
+  const articleDates = new Set<string>()
   articles.map((article: any) => articleDates.add(dayjs(article.publishedAt).format('YYYYMM')))
-
-  const paths = Array.from(articleDates).map((slug) => ({ params: { slug } }))
-
-  console.log(paths)
-  let g = [{ params: { slug: '202204' } }, { params: { slug: '202202' } }]
+  const paths = Array.from(articleDates.values()).map((slug) => ({ params: { slug } }))
+  
   return {
     paths: paths,
     fallback: false,
