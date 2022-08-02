@@ -9,9 +9,8 @@ import type { Post, PostProps } from '../src/d'
 
 import { getAllArticlesProp } from '../src/utils/getProps'
 
-import HeadElem from '../src/components/head'
-import PostListing from '../src/components/postListing'
-import SideBar from '../src/components/sidebar'
+import { HeadElem } from 'components/head'
+import { SideBar } from 'components/sidebar'
 
 const Home: NextPage<PostProps> = (props) => {
 
@@ -31,7 +30,7 @@ const Home: NextPage<PostProps> = (props) => {
         <p>Rage works.</p>
         <p>Rage clarifies, cuts through, and captures the essence of the evolutionary spirit.</p>
         <p>Rage, in all of its forms — Rage for life, for money, for love, knowledge — has marked the upward surge of mankind.</p>
-        <p>And Rage – you mark my words — will not only save Teldar Paper, but that other malfunctioning corporation called the USA.”</p>
+        <p>And Rage– you mark my words — will not only save Teldar Paper, but that other malfunctioning corporation called the USA.”</p>
         <p>Would have been a much better speech, Mr Gekko…</p>
       </main>
       <div className="col-span-2">

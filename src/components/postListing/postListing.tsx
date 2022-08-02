@@ -1,13 +1,11 @@
 import React from 'react'
-
 import Link from 'next/link'
-
 import dayjs from 'dayjs'
 
-import type { Post } from '../d'
-import * as Constants from '../constants'
+import type { Post } from '../../d'
+import * as Constants from '../../constants'
 
-export default function PostListing(props: { post: Post }) {
+export function PostListing(props: { post: Post }) {
   return (
     <Link href={`/posts/${props.post.slug}`} passHref>
       <a>

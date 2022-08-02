@@ -9,9 +9,9 @@ import type { Post, PostProps } from '../src/d'
 
 import { getAllArticlesProp } from '../src/utils/getProps'
 
-import HeadElem from '../src/components/head'
-import PostListing from '../src/components/postListing'
-import SideBar from '../src/components/sidebar'
+import { HeadElem } from 'components/head'
+import { PostListing } from 'components/postListing'
+import { SideBar } from 'components/sidebar'
 
 const Home: NextPage<PostProps> = (props) => {
 

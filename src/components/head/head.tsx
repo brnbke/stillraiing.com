@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head'
 
-export default function HeadElem(props: { headStr?: string }) {
+export function HeadElem(props: { headStr?: string }) {
   return (
     <>
       <Head>

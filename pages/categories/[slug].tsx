@@ -11,9 +11,9 @@ import dayjs from 'dayjs'
 
 import { getAllArticlesProp } from '../../src/utils/getProps'
 
-import HeadElem from '../../src/components/head'
-import PostListing from '../../src/components/postListing'
-import SideBar from '../../src/components/sidebar'
+import { HeadElem } from 'components/head'
+import { PostListing } from 'components/postListing'
+import { SideBar } from 'components/sidebar'
 
 import type { Post } from '../../src/d'
 
@@ -51,8 +51,6 @@ export const getStaticProps: GetStaticProps = async () => getAllArticlesProp()
 
 export const getStaticPaths: GetStaticPaths = () => {
   const paths = Array.from(Constants.rating.keys()).map((slug) => ({ params: { slug } }))
-  console.log(paths)
-
 
   return {
     paths,

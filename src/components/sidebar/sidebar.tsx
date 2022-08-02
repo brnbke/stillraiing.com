@@ -4,10 +4,10 @@ import Link from 'next/link'
 
 import dayjs from 'dayjs'
 
-import type { PostProps, Post } from '../d'
-import * as Constants from '../constants'
+import type { PostProps, Post } from '../../d'
+import * as Constants from '../../constants'
 
-export default function SideBar(props: PostProps) {
+export function SideBar(props: PostProps) {
 
   const archiveMonths = new Map<string, string>()
   {

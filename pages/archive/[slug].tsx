@@ -11,9 +11,9 @@ import { getAllArticles } from '../../src/utils/mdx'
 
 import type { Post } from '../../src/d'
 
-import HeadElem from '../../src/components/head'
-import PostListing from '../../src/components/postListing'
-import SideBar from '../../src/components/sidebar'
+import { HeadElem } from 'components/head'
+import { PostListing } from 'components/postListing'
+import { SideBar } from 'components/sidebar'
 
 export interface QParams extends ParsedUrlQuery {
   slug?: string

@@ -11,11 +11,12 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
 import dayjs from 'dayjs'
 
-import HeadElem from '../../src/components/head'
+import { HeadElem } from 'components/head'
+import { Text } from 'components/text'
 
-import { getSlug, getArticleFromSlug } from '../../src/utils/mdx'
+import { getSlug, getArticleFromSlug } from 'utils/mdx'
 
-import type { IParams, Post } from '../../src/d'
+import type { IParams, Post } from 'd'
 
 interface blogPost {
   post: {
@@ -28,12 +29,12 @@ export default function Blog({ post: { source, frontmatter } }: blogPost) {
   return (
     <React.Fragment>
       <HeadElem headStr={frontmatter.title} />
-      <div className="article-container">
-        <h1 className="article-title">{frontmatter.title}</h1>
-        <p className="publish-date">
-          Posted on {dayjs(frontmatter.publishedAt).format('MMMM D, YYYY')} &mdash;{' '}
+      <div className="article-container px-5 py-10">
+      <Text appearance='h1' as='h1'>{frontmatter.title}</Text>
+      <Text appearance='small' as='p'>
+        Posted on {dayjs(frontmatter.publishedAt).format('MMMM D, YYYY')} &mdash;{' '}
           {frontmatter.readingTime}
-        </p>
+      </Text>
         <div className="content">
           <MDXRemote {...source} components={{ Image }} />
         </div>
