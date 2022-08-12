@@ -1,10 +1,11 @@
 import React from 'react'
-
 import Link from 'next/link'
-
 import dayjs from 'dayjs'
 
-import type { PostProps, Post } from '../../d'
+import { Text } from 'components/text'
+import { Li, Ul } from 'components/list'
+
+import type { PostProps, Post } from 'd'
 import * as Constants from '../../constants'
 
 export function SideBar(props: PostProps) {
@@ -18,35 +19,39 @@ export function SideBar(props: PostProps) {
 
   return (
     <>
-      <div className="col-span-2">
-        <h2>Archives</h2>
-        <ul>
+      <div className="col-span-2 mt-6">
+        <Text appearance='h2' as='h2'>
+          Archives
+        </Text>
+        <Ul>
           {
             Array.from(archiveMonths.keys()).map((month: string) => {
               return (
-                <li key={`archive-${month}`} >
+                <Li key={`archive-${month}`} >
                   <Link href={`/archive/${month}`} passHref>
                     <a>
                       {archiveMonths.get(month)}
                     </a>
                   </Link>
-                </li>
+                </Li>
               )
             })
           }
-        </ul>
-        <h2>Categories</h2>
+        </Ul>
+        <Text appearance='h2' as='h2'>
+          Categories
+        </Text>
         <ul>
           {
             Array.from(Constants.rating.keys()).map((ratingKey: string) => {
               return (
-                <li key={`rating-${ratingKey}`}>
+                <Li key={`rating-${ratingKey}`}>
                   <Link href={`/categories/${ratingKey}`} passHref>
                     <a>
                       {Constants.rating.get(ratingKey)}
                     </a>
                   </Link>
-                </li>
+                </Li>
               )
             })
           }

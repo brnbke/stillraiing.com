@@ -14,6 +14,7 @@ import type { Post } from '../../src/d'
 import { HeadElem } from 'components/head'
 import { PostListing } from 'components/postListing'
 import { SideBar } from 'components/sidebar'
+import { Text } from 'components/text'
 
 export interface QParams extends ParsedUrlQuery {
   slug?: string
@@ -28,9 +29,15 @@ export default function Categories(props: any) {
   })
 
   return <React.Fragment>
-    <HeadElem headStr="sdf" />
+    <HeadElem headStr={dayjs(archiveMonth).format('MMMM, YYYY')} />
     <div className="grid grid-cols-8">
       <main className="col-span-6">
+
+        <div className="my-6">
+          <Text appearance='body' as='p'>
+            Posts from: {dayjs(archiveMonth).format('MMMM, YYYY')}
+          </Text>
+        </div>
 
         {postMatchingCategories.length > 0 && postMatchingCategories.map((post: Post) => {
           return (
@@ -39,7 +46,10 @@ export default function Categories(props: any) {
         })}
 
         {
-          postMatchingCategories.length === 0 && <p>Sorry no posts with this rage level found</p>
+          postMatchingCategories.length === 0 && 
+          <Text appearance='body' as='p'>
+            Sorry no posts for this date
+          </Text>
         }
       </main>
       <div className="col-span-2">

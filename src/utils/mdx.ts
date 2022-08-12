@@ -47,7 +47,6 @@ export async function getAllArticles() {
       'utf-8'
     )
     const { data } = matter(source)
-
     return [
       {
         ...data,

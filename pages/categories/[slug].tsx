@@ -7,13 +7,12 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 
 import * as Constants from '../../src/constants'
 
-import dayjs from 'dayjs'
-
 import { getAllArticlesProp } from '../../src/utils/getProps'
 
 import { HeadElem } from 'components/head'
 import { PostListing } from 'components/postListing'
 import { SideBar } from 'components/sidebar'
+import { Text } from 'components/text'
 
 import type { Post } from '../../src/d'
 
@@ -29,14 +28,23 @@ export default function Categories(props: any) {
     <HeadElem headStr={Constants.rating.get(rating)} />
     <div className="grid grid-cols-8">
       <main className="col-span-6">
-        <h1>Posts rated: {rating} - {Constants.rating.get(rating)}</h1>
+        <div className="my-6">
+          <Text appearance='body' as='p'>
+            Posts rated: {rating} - {Constants.rating.get(rating)}
+          </Text>
+        </div>
+
         {postMatchingCategories.length > 0 && postMatchingCategories.map((post: Post) => {
           return (
             <PostListing key={post.slug} post={post} />
           )
         })}
         {
-          postMatchingCategories.length === 0 && <p>Sorry no posts with this rage level found</p>
+          postMatchingCategories.length === 0 &&
+          <Text appearance='body' as='p'>
+            Sorry no posts with this rage level found
+          </Text>
+        
         }
       </main>
       <div className="col-span-2">

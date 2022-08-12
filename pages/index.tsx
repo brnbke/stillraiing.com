@@ -23,7 +23,7 @@ const Home: NextPage<PostProps> = (props) => {
 
   return <React.Fragment>
     <HeadElem />
-    <div className="grid grid-cols-8">
+    <div className="grid grid-cols-8  px-5 py-10">
       <main className="col-span-6">
         {props.posts.map((post: Post) => {
           return (

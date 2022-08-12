@@ -6,7 +6,7 @@ interface Post {
   readingTime: string;
   excerpt: string;
   publishedAt: string;
-  rating: string
+  rating: string;
 }
 
 interface PostProps {
